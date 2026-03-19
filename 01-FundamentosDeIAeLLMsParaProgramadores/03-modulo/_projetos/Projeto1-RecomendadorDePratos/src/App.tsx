@@ -5,6 +5,7 @@ import "./App.css";
 // no App.tsx
 import { makeContext } from "../src/ml/makecontext";
 import { useEffect } from "react";
+import { makeFeatureVector, makeLabel } from "./ml/makeFeatureVector";
 // import { trainModel }  from './ml/trainModel'
 // import { recommend }   from './ml/recommend'
 
@@ -20,17 +21,28 @@ function App() {
         );
 
         const context = makeContext(dishes, users);
-        console.log("dimensions:", context.dimensions);
-        // deve printar: dimensions: 9
-        // 3 numéricas + 4 categorias + 2 spicy = 9 ✅
 
-        console.log("categoryIndex:", context.categoryIndex);
-        // { pizza: 0, japones: 1, burger: 2, italiano: 3 }
+        const user = context.users[0]
+        const dish = context.dishes[0]
 
-        console.log("spicyIndex:", context.spicyIndex);
-        // { nao: 0, sim: 1 }
-        // // eslint-disable-next-line no-debugger
-        // debugger
+        const vector = makeFeatureVector(user, dish, context);
+        const label = makeLabel(user, dish)
+
+        console.log("vetor:", vector)
+        // esperado:
+        // [
+        //   0.13,  ← ageNorm    (25-22)/(45-22)
+        //   0.09,  ← budgetNorm (30-25)/(80-25)
+        //   0.27,  ← priceNorm  (35-18)/(65-18)
+        //   1, 0, 0, 0,  ← pizza
+        //   1, 0         ← nao
+        // ]
+
+        console.log("label:", label);
+        // esperado: 1 (Ana curtiu Pizza Margherita ✅)
+
+        console.log("tamanho do vetor:", vector.length)
+        // esperado: 9 ← deve bater com dimensions
       } catch (error) {
         console.log(error);
       }
