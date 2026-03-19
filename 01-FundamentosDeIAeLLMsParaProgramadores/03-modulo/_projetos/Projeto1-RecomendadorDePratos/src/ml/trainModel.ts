@@ -60,7 +60,16 @@ function buildModel(dimensions: number): tf.Sequential {
 
 
 // ── TREINO ─────────────────────────────────────────────────
-export async function trainModel(context: ReturnType<typeof makeContext>) {
+export type TrainProgress = {
+    epoch: number
+    epochs: number
+    progress: number
+}
+
+export async function trainModel(
+    context: ReturnType<typeof makeContext>,
+    options?: { onProgress?: (progress: TrainProgress) => void }
+) {
     const { X, Y } = makeDataSet(context)
 
     // ✅ valida antes de criar os tensores
@@ -78,9 +87,12 @@ export async function trainModel(context: ReturnType<typeof makeContext>) {
     const ys = tf.tensor2d(Y, [Y.length, 1])
 
     const model = buildModel(context.dimensions)
+    const epochs = 50
+
+    options?.onProgress?.({ epoch: 0, epochs, progress: 0 })
 
     await model.fit(xs, ys, {
-        epochs: 50,
+        epochs,
         batchSize: 8,
         shuffle: true,
         validationSplit: 0.2,
@@ -88,10 +100,14 @@ export async function trainModel(context: ReturnType<typeof makeContext>) {
             onEpochEnd: (epoch, logs) => {
                 const loss = logs?.loss ?? 0
                 const acc = logs?.acc ?? logs?.accuracy ?? 0
-                console.log(`Epoch ${epoch + 1}/50 — loss: ${loss.toFixed(4)} — acc: ${acc.toFixed(2)}`)
+                const epochNumber = epoch + 1
+                options?.onProgress?.({ epoch: epochNumber, epochs, progress: epochNumber / epochs })
+                console.log(`Epoch ${epochNumber}/${epochs} — loss: ${loss.toFixed(4)} — acc: ${acc.toFixed(2)}`)
             }
         }
     })
+
+    options?.onProgress?.({ epoch: epochs, epochs, progress: 1 })
 
     xs.dispose()
     ys.dispose()
