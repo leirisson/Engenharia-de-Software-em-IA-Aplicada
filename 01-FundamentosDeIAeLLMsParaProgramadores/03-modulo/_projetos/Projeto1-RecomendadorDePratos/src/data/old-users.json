@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Ana",
+    "age": 25,
+    "budget": 30,
+    "likedDishes": [
+      "Pizza Margherita",
+      "Pasta Carbonara"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Carlos",
+    "age": 38,
+    "budget": 60,
+    "likedDishes": [
+      "Sushi Combo",
+      "Temaki Salmão"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Beatriz",
+    "age": 22,
+    "budget": 25,
+    "likedDishes": [
+      "X-Burguer Clássico",
+      "Batata Frita"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Rafael",
+    "age": 45,
+    "budget": 80,
+    "likedDishes": [
+      "Sushi Combo",
+      "Pasta Carbonara"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Juliana",
+    "age": 31,
+    "budget": 40,
+    "likedDishes": [
+      "Pizza Margherita",
+      "X-Burguer Clássico"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Marcos",
+    "age": 27,
+    "budget": 35,
+    "likedDishes": [
+      "Batata Frita",
+      "X-Burguer Clássico"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Fernanda",
+    "age": 33,
+    "budget": 55,
+    "likedDishes": [
+      "Temaki Salmão",
+      "Sushi Combo"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Diego",
+    "age": 29,
+    "budget": 45,
+    "likedDishes": [
+      "Pizza Margherita",
+      "Pasta Carbonara"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Patricia",
+    "age": 41,
+    "budget": 70,
+    "likedDishes": [
+      "Sushi Combo",
+      "Temaki Salmão"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Bruno",
+    "age": 24,
+    "budget": 28,
+    "likedDishes": [
+      "X-Burguer Clássico",
+      "Batata Frita"
+    ]
+  }
+]

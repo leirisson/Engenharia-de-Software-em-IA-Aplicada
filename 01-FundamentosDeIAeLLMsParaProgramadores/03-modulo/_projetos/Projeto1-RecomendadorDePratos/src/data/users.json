@@ -98,5 +98,224 @@
       "X-Burguer Clássico",
       "Batata Frita"
     ]
+  },
+  {
+    "id": 11,
+    "name": "Camila",
+    "age": 26,
+    "budget": 50,
+    "likedDishes": [
+      "Pizza Quatro Queijos",
+      "Lasanha à Bolonhesa"
+    ]
+  },
+  {
+    "id": 12,
+    "name": "João Pedro",
+    "age": 35,
+    "budget": 65,
+    "likedDishes": [
+      "Pizza Pepperoni",
+      "X-Tudo",
+      "Sashimi Salmão"
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Isabela",
+    "age": 28,
+    "budget": 42,
+    "likedDishes": [
+      "Uramaki Filadélfia",
+      "Hot Roll",
+      "Temaki Skin"
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Gustavo",
+    "age": 32,
+    "budget": 55,
+    "likedDishes": [
+      "Pizza Frango com Catupiry",
+      "X-Burguer com Cheddar",
+      "Onion Rings"
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Larissa",
+    "age": 23,
+    "budget": 38,
+    "likedDishes": [
+      "Risoto de Funghi",
+      "Nhoque ao Sugo",
+      "Bruschetta"
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Thiago",
+    "age": 42,
+    "budget": 90,
+    "likedDishes": [
+      "Sushi Variado (20 peças)",
+      "Yakisoba de Frango",
+      "Missoshiru"
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Mariana",
+    "age": 29,
+    "budget": 48,
+    "likedDishes": [
+      "Fettuccine Alfredo",
+      "Ravioli de Ricotta com Espinafre",
+      "Polenta Frita"
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Rodrigo",
+    "age": 37,
+    "budget": 75,
+    "likedDishes": [
+      "Pizza Portuguesa",
+      "X-Burguer Duplo",
+      "Nuggets de Frango"
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Aline",
+    "age": 30,
+    "budget": 44,
+    "likedDishes": [
+      "Temaki Salmão",
+      "Harumaki",
+      "Gohan"
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Felipe",
+    "age": 34,
+    "budget": 62,
+    "likedDishes": [
+      "Pizza Napolitana",
+      "Pizza Margherita Especial",
+      "Batata Frita"
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Tatiane",
+    "age": 27,
+    "budget": 36,
+    "likedDishes": [
+      "X-Egg Burguer",
+      "X-Salada",
+      "Onion Rings"
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Eduardo",
+    "age": 44,
+    "budget": 85,
+    "likedDishes": [
+      "Lasanha à Bolonhesa",
+      "Risoto de Funghi",
+      "Pasta Carbonara"
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Vanessa",
+    "age": 25,
+    "budget": 33,
+    "likedDishes": [
+      "X-Frango",
+      "Batata Frita",
+      "Bruschetta"
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Alexandre",
+    "age": 39,
+    "budget": 70,
+    "likedDishes": [
+      "Sushi Combo",
+      "Temaki Skin",
+      "Yakisoba de Frango"
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Priscila",
+    "age": 31,
+    "budget": 52,
+    "likedDishes": [
+      "Pizza Calabresa",
+      "Pizza Quatro Queijos",
+      "Nhoque ao Sugo"
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Renato",
+    "age": 28,
+    "budget": 47,
+    "likedDishes": [
+      "X-Burguer Bacon",
+      "X-Burguer com Cheddar",
+      "Onion Rings"
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Cristiane",
+    "age": 36,
+    "budget": 58,
+    "likedDishes": [
+      "Uramaki Filadélfia",
+      "Hot Roll",
+      "Sashimi Salmão"
+    ]
+  },
+  {
+    "id": 28,
+    "name": "André",
+    "age": 33,
+    "budget": 63,
+    "likedDishes": [
+      "Pizza Pepperoni",
+      "Pizza Frango com Catupiry",
+      "Batata Frita"
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Luciana",
+    "age": 41,
+    "budget": 77,
+    "likedDishes": [
+      "Ravioli de Ricotta com Espinafre",
+      "Fettuccine Alfredo",
+      "Polenta Frita"
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Ricardo",
+    "age": 26,
+    "budget": 41,
+    "likedDishes": [
+      "X-Tudo",
+      "X-Burguer Duplo",
+      "Nuggets de Frango"
+    ]
   }
 ]

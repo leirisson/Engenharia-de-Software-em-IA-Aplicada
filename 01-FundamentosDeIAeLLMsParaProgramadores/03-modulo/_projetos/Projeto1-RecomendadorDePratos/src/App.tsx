@@ -6,7 +6,7 @@ import "./App.css";
 import { makeContext } from "../src/ml/makecontext";
 import { useEffect } from "react";
 import { makeFeatureVector, makeLabel } from "./ml/makeFeatureVector";
-// import { trainModel }  from './ml/trainModel'
+import { trainModel } from "../src/ml/trainModel";
 // import { recommend }   from './ml/recommend'
 
 function App() {
@@ -22,27 +22,14 @@ function App() {
 
         const context = makeContext(dishes, users);
 
-        const user = context.users[0]
-        const dish = context.dishes[0]
+        const user = context.users[0];
+        const dish = context.dishes[0];
 
         const vector = makeFeatureVector(user, dish, context);
-        const label = makeLabel(user, dish)
+        const label = makeLabel(user, dish);
+        const model = await trainModel(context);
 
-        console.log("vetor:", vector)
-        // esperado:
-        // [
-        //   0.13,  ← ageNorm    (25-22)/(45-22)
-        //   0.09,  ← budgetNorm (30-25)/(80-25)
-        //   0.27,  ← priceNorm  (35-18)/(65-18)
-        //   1, 0, 0, 0,  ← pizza
-        //   1, 0         ← nao
-        // ]
-
-        console.log("label:", label);
-        // esperado: 1 (Ana curtiu Pizza Margherita ✅)
-
-        console.log("tamanho do vetor:", vector.length)
-        // esperado: 9 ← deve bater com dimensions
+        console.log("modelo treinado ✅");
       } catch (error) {
         console.log(error);
       }

@@ -6,6 +6,8 @@ export interface Dish {
     category: string
     price: number
     spicy: string
+    description: string
+    image: string
 }
 
 export interface User {
