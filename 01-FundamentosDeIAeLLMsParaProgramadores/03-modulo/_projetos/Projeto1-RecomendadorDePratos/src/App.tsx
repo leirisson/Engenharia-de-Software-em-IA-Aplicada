@@ -36,7 +36,8 @@ function App() {
       try {
         const urls = ["../src/data/users.json", "../src/data/dishes.json"];
         const response = await Promise.all(urls.map((url) => fetch(url)));
-        const [usersData, dishesData] = (await Promise.all(
+        const [usersData, dishesData] = (
+          await Promise.all(
           response.map((r) => r.json()),
         )) as [User[], Dish[]];
 
