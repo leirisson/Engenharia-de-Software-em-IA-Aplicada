@@ -1,0 +1,47 @@
+# Business Rules
+- Clean Architecture:
+  - Separar camadas: domain (entidades, use cases), application (services, DTOs), infrastructure (db, http, log), interface/adapters (controllers, presenters).
+  - Domain não depende de frameworks nem de detalhes de infraestrutura.
+  - Dependência entra via interfaces e inversão de controle.
+- DDD:
+  - Modelar agregados e entidades do domínio de chat (Session, Message).
+  - Repositórios expostos como interfaces no domínio; implementações na infraestrutura (Prisma).
+  - Regras de negócio centralizadas em use cases.
+- TDD:
+  - Escrever testes antes da implementação.
+  - Cobertura mínima recomendada: 75% linhas/branches para domínios e use cases.
+  - Testar cenários de erro, limites e validações.
+  - Ciclo obrigatório Red → Green → Refactor em todas as features e correções.
+  - Commits devem refletir o ciclo: RED (teste falha) → GREEN (teste passa) → REFACTOR (melhoria mantendo verde).
+- Clean Code:
+  - TypeScript strict, nomes claros, funções pequenas, SRP.
+  - Sem efeitos colaterais ocultos; tratar erros explicitamente.
+  - Linters e formatação automatizada (ESLint + Prettier).
+- Fastify:
+  - Plugins modulares (routes, healthcheck, logging, cors).
+  - Não acoplar regras de negócio em handlers; delegar a use cases/services.
+- Validação com Zod:
+  - Todos os endpoints e use cases recebem DTOs validados por esquemas Zod.
+  - Erros de validação retornam 422 (Unprocessable Entity) com detalhes padronizados.
+  - Schemas compartilhados em application/interfaces; não acoplar ao framework.
+- Testes com Vitest:
+  - Runner oficial do projeto é Vitest com relatórios de cobertura.
+  - Testar use cases, controllers e repositórios com fakes/mocks.
+  - Garantir testes para caminhos de erro e validações de entrada.
+- Prisma/SQLite:
+  - Migrations versionadas; schema sob controle de revisão.
+  - Transações para operações multi-entidade.
+  - Consultas tipadas; evitar SQL manual.
+- Segurança e Resiliência:
+  - Validação de entrada/saída em endpoints e serviços.
+  - Moderação antes de persistir/exibir mensagens.
+  - Logs estruturados; evitar log de dados sensíveis.
+
+# Validation Rules
+- tsconfig com "strict": true e "noImplicitAny": true.
+- ESLint sem erros em src/.
+- Prettier aplicável em todo o código.
+- Prisma schema válido e migrations executáveis.
+- Healthcheck responde 200 OK e verifica conexão com DB.
+- Zod deve validar entradas em endpoints e services (safeParse obrigatório).
+- Suite de testes roda em Vitest com cobertura mínima estabelecida.
