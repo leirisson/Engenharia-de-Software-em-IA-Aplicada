@@ -6,6 +6,10 @@ import { env, type PretrainedOptions } from "@huggingface/transformers";
 import { HuggingFaceTransformersEmbeddings } from "@langchain/community/embeddings/huggingface_transformers";
 import { Neo4jVectorStore } from "@langchain/community/vectorstores/neo4j_vector";
 import { displayResults } from "./util.ts";
+import * as readlineSync from 'readline-sync';
+
+
+
 
 env.cacheDir = path.join(os.tmpdir(), "hf-transformers-cache");
 // Transformers.js faz cache dos arquivos baixados (modelos/tokenizers/onnx).
@@ -113,8 +117,8 @@ try {
     // - o Neo4j retorna os topK chunks mais próximos
     // - displayResults só formata a saída para você validar rapidamente o resultado
     // const query = 'o que é hot encoding e quando usar ?'
-    const query = 'o que significa treinar uma rede neural ?'
-    const results = await _neo4jVectorStore.similaritySearch(query, CONFIG.similarity.topK)
+    const question: string = readlineSync.question('Please enter your question: ');
+    const results = await _neo4jVectorStore.similaritySearch(question, CONFIG.similarity.topK)
     displayResults(results)
 }
  catch (error) {

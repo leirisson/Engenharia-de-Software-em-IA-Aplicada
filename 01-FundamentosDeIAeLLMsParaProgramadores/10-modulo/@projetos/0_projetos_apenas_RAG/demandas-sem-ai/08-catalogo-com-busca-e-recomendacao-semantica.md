@@ -6,11 +6,17 @@ Aplicação full-stack para cadastrar itens de um catálogo (ex.: livros, cursos
 - recomendação “itens parecidos”
 - painel administrativo para CRUD
 
+Para simular uma empresa, o catálogo não vem “só do admin”: ele é composto por múltiplas fontes:
+- cadastro do ERP (CSV/JSON exportado)
+- descrições do time de marketing (texto livre)
+- reviews de clientes (tickets/comentários)
+
 ## Objetivo
 Treinar:
 - embeddings em dados estruturados (nome + descrição + categoria)
 - “similar items” (vector-to-vector)
 - experiência de busca no frontend (autocomplete, filtros, paginação simples)
+ - mistura de fontes: campos oficiais + conteúdo gerado por usuário (reviews)
 
 ## Personas e fluxos
 - Admin:
@@ -28,6 +34,10 @@ Treinar:
 ## Requisitos funcionais
 - CRUD de itens:
   - `name`, `description`, `category`, `tags[]`, `price?` (opcional)
+- Importação de catálogo (simulada):
+  - endpoint/ação para importar itens de um CSV do “ERP”
+- Reviews (simulado):
+  - usuário cria review textual associado a um item
 - Busca semântica:
   - query → topK
   - filtros: categoria, tag
@@ -40,14 +50,23 @@ Treinar:
 - `POST /api/items`
 - `PUT /api/items/:id`
 - `DELETE /api/items/:id`
+- `POST /api/items/import`
+  - body: `{ "csvPath": "./data/erp-items.csv" }` (simulado)
 - `POST /api/search`
   - body: `{ query, topK, category?, tag? }`
 - `GET /api/items/:id/recommendations?topK=5`
+ - `POST /api/items/:id/reviews`
+   - body: `{ "rating": 1..5, "text": "..." }`
 
 ### Tarefas (backend)
 - Modelar `Item` no Neo4j (nó + propriedades + embedding).
 - Gerar embedding no create/update:
   - texto base: `name + " - " + description + " " + tags.join(" ")`
+- Implementar import do “ERP”:
+  - parse de CSV e criação/atualização (upsert) de itens por `sku`/`externalId`
+- Modelar `Review`:
+  - nó ligado ao `Item`, com `rating`, `text`, `createdAt`
+  - opcional: embedding do review
 - Implementar busca semântica com filtros de metadados.
 - Implementar recomendações:
   - calcular embedding do item alvo (ou reutilizar embedding salvo)
@@ -69,7 +88,7 @@ Treinar:
 - Área admin com formulários de criação/edição e feedback de sucesso/erro.
 
 ## Critérios de aceite
-- Admin cadastra 20 itens e consegue:
+- Admin cadastra 20 itens (ou importa via CSV) e consegue:
   - achar itens relevantes por busca semântica (mesmo com sinônimos/paráfrases)
   - ver recomendações coerentes na página de detalhe
 - Filtros funcionam em conjunto com a busca.
