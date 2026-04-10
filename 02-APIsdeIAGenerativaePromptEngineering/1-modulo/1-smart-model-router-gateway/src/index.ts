@@ -1,6 +1,11 @@
+import { CONFIG } from "./config.ts";
+import { OpenRouterService } from "./openRouterServices.ts";
 import { createServer } from "./server.ts";
 
-const app = createServer()
+const openRouterService = new OpenRouterService(CONFIG)
+
+
+const app = createServer(openRouterService)
 
 
 await app.listen({
