@@ -5,13 +5,16 @@ import { createServer } from '../src/server.ts'
 
 
 
-test('routes to cheapest model by default', async () => {
+test('commando upper transforms message into UPPERCASE', async () => {
     const app = createServer()
+    const msg = "make this message UPPER please!"
+    const expeted = msg.toUpperCase()
     const response = await app.inject({
         method: 'POST',
         url: '/chat',
-        body:{ question:'What is rate limiting?'}
+        body:{ question:msg}
     })
     assert.equal(response.statusCode, 200)
+    assert.equal(response.body, expeted)
 })
 

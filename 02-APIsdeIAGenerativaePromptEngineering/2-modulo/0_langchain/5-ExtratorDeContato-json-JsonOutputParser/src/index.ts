@@ -5,7 +5,6 @@ import { CONFIG } from './config.ts'
 
 
 const modelLLM = new ChatOpenAI({
-
     model: CONFIG.model,
 })
 
