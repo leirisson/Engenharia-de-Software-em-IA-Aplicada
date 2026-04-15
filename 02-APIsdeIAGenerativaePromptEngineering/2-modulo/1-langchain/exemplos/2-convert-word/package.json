@@ -1,0 +1,23 @@
+{
+  "name": "2-convert-word",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "langgraph:server":"npx npx @langchain/langgraph-cli@latest dev",
+    "dev": "node --env-file .env --inspect=127.0.0.1:9230 --watch --experimental-strip-types src/index.ts",
+    "start": "node --experimental-strip-types src/index.ts",
+    "test:dev": "node --env-file .env --inspect --watch --test ./tests/**/*.test.ts",
+    "test": "node --env-file .env --test  ./tests/**/*.test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+    "dependencies": {
+    "@langchain/core": "^1.1.19",
+    "@types/node": "^24.12.2",
+    "fastify": "^5.7.4",
+    "langchain": "^1.2.17"
+  }
+}
