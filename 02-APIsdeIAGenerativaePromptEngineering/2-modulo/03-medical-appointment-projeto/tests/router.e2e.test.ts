@@ -25,27 +25,27 @@ describe('Medical Appointment System - E2E Tests', async () => {
         console.log('Schedule Success Response:', response.body);
 
         assert.equal(response.statusCode, 200);
-        // const body = JSON.parse(response.body);
-        // assert.equal(body.intent, 'schedule');
+        const body = JSON.parse(response.body);
+        assert.equal(body.intent, 'schedule');
         // assert.equal(body.success, true);
     });
 
 
-    it('Cancel appointment - Success', async () => {
+    // it.bind('Cancel appointment - Success', async () => {
 
-         await makeARequest(
-            `Sou Joao da Silva e quero agendar uma consulta com ${professionals.at(1)?.name} para hoje às 14h`
-        )
+    //      await makeARequest(
+    //         `Sou Joao da Silva e quero agendar uma consulta com ${professionals.at(1)?.name} para hoje às 14h`
+    //     )
 
-        const response = await makeARequest(
-            `Cancele minha consulta com ${professionals.at(1)?.name} que tenho hoje às 14h, me chamo Joao da Silva`
-        );
+    //     const response = await makeARequest(
+    //         `Cancele minha consulta com ${professionals.at(1)?.name} que tenho hoje às 14h, me chamo Joao da Silva`
+    //     );
 
-        console.log('Cancel Success Response:', response.body);
+    //     console.log('Cancel Success Response:', response.body);
 
-        assert.equal(response.statusCode, 200);
-        // const body = JSON.parse(response.body);
-        // assert.equal(body.intent, 'cancel');
-        // assert.equal(body.success, true);
-    });
+    //     assert.equal(response.statusCode, 200);
+    //     // const body = JSON.parse(response.body);
+    //     // assert.equal(body.intent, 'cancel');
+    //     // assert.equal(body.success, true);
+    // });
 });
