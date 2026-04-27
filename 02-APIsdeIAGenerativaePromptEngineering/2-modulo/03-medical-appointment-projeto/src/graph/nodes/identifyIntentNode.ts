@@ -4,7 +4,7 @@ import { OpenRaouterService } from '../../services/openRouterService.ts';
 import type { GraphState } from '../graph.ts';
 
 export function createIdentifyIntentNode(llmClient: OpenRaouterService) {
-  return async (state: GraphState): Promise<GraphState> => {
+  return async (state: GraphState): Promise<Partial<GraphState>> => {
     console.log(`🔍 Identifying intent...`);
     const input = state.messages.at(-1)!.text;
 
@@ -12,17 +12,30 @@ export function createIdentifyIntentNode(llmClient: OpenRaouterService) {
 
       const systemPrompt = getSystemPrompt(professionals)
       const userPrompt = getUserPromptTemplate(input)
+      
     
       const result = await llmClient.generateStructured(
-        systemPrompt,
         userPrompt,
+        systemPrompt,
         IntentSchema
       )
 
+      if(!result.success){
+        console.log(`🚨 Erro ao identificar itenção do cliente: ${result.error}`)
+        return {
+          intent: 'unknown',
+          error: result.error
+        }
+      }
 
 
+      const intentData = result.data!
+
+      console.log(`✅ inteção identificada: ${intentData.intent}`)
+      console.log(`📦 Dados extraídos pelo LLM:`, JSON.stringify(intentData, null, 2))
+ 
       return {
-        ...state,
+        ...intentData,
       };
     } catch (error) {
       console.error('❌ Error in identifyIntent node:', error);

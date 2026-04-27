@@ -1,14 +1,13 @@
 import { ChatOpenAI } from '@langchain/openai'
 import { config, type ModelConfig } from '../config.ts';
 import { z } from 'zod'
-import { createAgent, HumanMessage, providerStrategy, SystemMessage } from 'langchain';
-import { success } from 'zod/v4';
-
+import { HumanMessage, SystemMessage } from '@langchain/core/messages';
 
 
 export class OpenRaouterService {
     private config: ModelConfig
     private llmClient: ChatOpenAI
+
     constructor(configOverride?: ModelConfig) {
         this.config = configOverride ?? config
 
@@ -23,39 +22,30 @@ export class OpenRaouterService {
                     'X-Title': this.config.xTitle
                 }
             },
-
-            // aqui vai a confgiuração do openRouter
             modelKwargs: {
                 models: this.config.models,
                 provider: this.config.provider
             }
-
-        }
-        )
+        })
     }
-
 
     async generateStructured<T>(
         userPrompt: string,
         systemPrompt: string,
         schema: z.ZodSchema<T>
     ) {
-        const agent = createAgent({
-            model: this.llmClient,
-            tools: [],
-            responseFormat: providerStrategy(schema)
-        })
-
         try {
+            const structuredLlm = this.llmClient.withStructuredOutput(schema, { strict: false })
+
             const messages = [
                 new SystemMessage(systemPrompt),
                 new HumanMessage(userPrompt)
             ]
 
-            const data = await agent.invoke({ messages })
+            const data = await structuredLlm.invoke(messages)
             return {
                 success: true,
-                data: data.structuredResponse
+                data: data as T
             }
         } catch (error) {
             return {
