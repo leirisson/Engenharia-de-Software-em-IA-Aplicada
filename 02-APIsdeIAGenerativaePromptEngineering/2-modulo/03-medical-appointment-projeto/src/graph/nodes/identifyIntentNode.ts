@@ -12,13 +12,13 @@ export function createIdentifyIntentNode(llmClient: OpenRaouterService) {
 
       const systemPrompt = getSystemPrompt(professionals)
       const userPrompt = getUserPromptTemplate(input)
+    
       const result = await llmClient.generateStructured(
         systemPrompt,
         userPrompt,
         IntentSchema
       )
 
-   
 
 
       return {
