@@ -15,6 +15,7 @@ export function createSchedulerNode(appointMentService: AppointmentService) {
 
     try {
 
+      // validação secundaria
       const validation = ScheduleRequiredFieldsSchema.safeParse(state)
 
       if(!validation.success){
