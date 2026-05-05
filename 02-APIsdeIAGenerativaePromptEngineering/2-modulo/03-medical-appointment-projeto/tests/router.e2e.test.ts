@@ -28,7 +28,7 @@ describe('Medical Appointment System - E2E Tests', async () => {
     });
 
 
-    it.bind('Cancel appointment - Success', async () => {
+    it('Cancel appointment - Success', async () => {
 
          await makeARequest(
             `Sou Joao da Silva e quero agendar uma consulta com ${professionals.at(1)?.name} para hoje às 14h`
