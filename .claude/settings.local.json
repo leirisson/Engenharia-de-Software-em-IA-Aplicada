@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm view *)"
+      "Bash(npm view *)",
+      "PowerShell(node --version)",
+      "PowerShell(npm --version)",
+      "PowerShell(npm config get msvs_version)",
+      "PowerShell(python --version 2>&1)",
+      "PowerShell($projectPath = \"C:\\\\Users\\\\leiri\\\\Documents\\\\GitHub\\\\Engenharia-de-Software-em-IA-Aplicada\\\\02-APIsdeIAGenerativaePromptEngineering\\\\2-modulo\\\\04-song-highlights\"; Test-Path \"$projectPath\\\\node_modules\" ; Test-Path \"$projectPath\\\\package-lock.json\")",
+      "PowerShell($projectPath = \"C:\\\\Users\\\\leiri\\\\Documents\\\\GitHub\\\\Engenharia-de-Software-em-IA-Aplicada\\\\02-APIsdeIAGenerativaePromptEngineering\\\\2-modulo\\\\04-song-highlights\"; Get-ChildItem \"$projectPath\\\\node_modules\\\\better-sqlite3\" -ErrorAction SilentlyContinue | Select-Object Name, LastWriteTime | Head 20)",
+      "PowerShell($projectPath = \"C:\\\\Users\\\\leiri\\\\Documents\\\\GitHub\\\\Engenharia-de-Software-em-IA-Aplicada\\\\02-APIsdeIAGenerativaePromptEngineering\\\\2-modulo\\\\04-song-highlights\"; Test-Path \"$projectPath\\\\node_modules\\\\better-sqlite3\"; Test-Path \"$projectPath\\\\node_modules\\\\better-sqlite3\\\\build\\\\Release\\\\better_sqlite3.node\")",
+      "PowerShell(npm install -g node-gyp 2>&1)",
+      "Read(//c/Program Files/**)"
     ]
   }
 }
